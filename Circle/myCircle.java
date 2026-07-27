@@ -1,0 +1,23 @@
+public class myCircle{
+	public static void main(String[] args){
+	
+	Cylinder c1 = new Cylinder();
+	Cylinder c2 = new Cylinder(2.0,10.0,"Blue");
+	Cone co1 = new Cone();
+	Cone co2 = new Cone(7.0,15.0,"Red");
+	
+	c1.display();
+	c2.display();
+	co1.display();
+	co2.display();
+	
+	co2.setRadius(20.0);
+	co2.setColor("Green");
+	co2.display();
+	
+	Circle ci1 = new Circle();
+	ci1.display();
+	
+	
+	}
+}

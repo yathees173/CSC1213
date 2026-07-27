@@ -1,0 +1,35 @@
+public class Batsman extends Player{
+	public int runs;
+	
+	public Batsman(int playerID, String name, int[] scores){
+		super(playerID,name,scores);
+	}
+	
+	public int getRuns(){
+		int sum=0;
+		for(int i=0; i<scores.length; i++){
+			sum=sum+scores[i];
+		}
+		return sum;
+	}
+	
+	public void addScore(int score){
+		if(score>0 && score<100){
+			System.out.println("Total runs : "+getRuns()+score);
+		}
+		
+		else
+			System.out.println("The score is should between 0 to 100.");
+		
+	}
+	
+	public void printDetails(){
+		System.out.println("Bat\'s man ID: "+getPlayerID());
+		System.out.println("Name: "+getName());
+		System.out.println("Country: "+getCountry());
+		System.out.println("Scores: ");
+		System.out.println("Total runs: ");
+	}
+	
+	
+}

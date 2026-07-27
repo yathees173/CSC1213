@@ -1,0 +1,41 @@
+public class Cone extends Circle{
+	private double height;
+	
+	public Cone(){
+		super();
+		this.height=1.0;
+	}
+	
+	public Cone(double radius){
+		super("Red", radius);
+		this.height=1.0;
+	}
+	
+	public Cone(double radius, double height){
+		super("Red", radius);
+		this.height=height;
+	}
+	
+	public Cone(double radius, double height, String color){
+		super(color, radius);
+		this.height=height;
+	}
+	
+	public double getHeight(){
+		return height;
+	}
+	
+	public void setHeight(double height){
+		this.height=height;
+	}
+	
+	public double getVolume(){
+		return (1/3.0)*(22/7.0)*getRadius()*getRadius()*height;
+	}
+	public void display(){
+		System.out.println("Cone height is "+height+", radius is "+getRadius()+", color is "+getColor());
+		System.out.println("The volume of the Cone is "+getVolume()+"\n");
+	}
+	
+	
+}

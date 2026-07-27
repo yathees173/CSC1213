@@ -1,0 +1,9 @@
+public class CricketApp{
+	public static void main(String args[]){
+		Batsman b1=new Batsman("Sachin Tendulkar", "India", 42, 0, 61, 15, 0, 100, 23, 64, 41, 0, 26);
+		Batsman b2=new Batsman("Virat Kohli", "India", 0, 25, 10, 60, 11, 0, 40, 11, 0, 2, 0);
+		Batsman b3=new Batsman("MS Dhoni", "India", 6, 22, 48, 0, 11, 69, 0, 21, 19, 0, 42);
+		Batsman b4=new Batsman("Ricky Ponting", "Australia", 11, 0, 28, 0, 64, 18, 45, 26, 0, 11, 0);
+		Batsman b5=new Batsman("Brian Lara", "West Indies", 0, 13, 21, 47, 0, 69, 17, 0, 12, 0, 40);
+	}
+}

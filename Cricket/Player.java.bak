@@ -1,0 +1,29 @@
+public class Player{
+	public int playerID;
+	public String name;
+	public String country;
+	public int[] scores;
+	
+	public Player(int playerID, String name, int[] scores){
+		this.playerID=playerID;
+		this.name=name;
+		this.scores=scores;
+	}
+	
+	public int getPlayerID(){
+		return playerID;
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getCountry(){
+		return country;
+	}
+	
+	public abstract void addScore(int score);
+	
+	public abstract void printdetails();
+
+}
