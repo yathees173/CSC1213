@@ -1,0 +1,12 @@
+public class Default{
+	int a;
+	double b;
+	String s;
+	
+	public static void main (String[] args){
+		Default obj=new Default();
+		System.out.println("a: "+ obj.a +" b: "+ obj.b +" s: " + obj.s);
+	}
+}
+
+//If declare variable inside main (local variable) we must initialized before used

@@ -1,0 +1,7 @@
+public class P1 {
+  public static void main(String[] args) {
+	final int x = 10;
+	x = 25; // will generate an error: cannot assign a value to a final variable
+    System.out.println(x);
+  }
+}

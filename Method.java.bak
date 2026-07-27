@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class Method
+	{	static double mul(double a, double b)	
+		{
+			return a*b;
+		}
+		static void mulv(double a, double b)	
+		{
+			System.out.println("The answer : "+ (a*b));
+		}
+		
+		static void mulv1(double a, double b)	
+		{
+			System.out.println("The answer : "+ (a*b));
+		}
+		
+		static void mulv2(double a, double b)	
+		{
+			System.out.println("The answer : "+ (a*b));
+		}
+	
+		public static void main(String args[])
+		{Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the length : ");
+		double l=sc.nextDouble();
+		System.out.println("Enter the width : ");
+		double w=sc.nextDouble();
+		System.out.println("The answer : "+ mul(l,w));
+		mulv(l,w);
+		mulv1(l,w);
+		mulv2(l,w);
+		
+		
+			
+		}
+	}
