@@ -1,0 +1,293 @@
+import java.util.Scanner;
+public class ATM{
+	 private int acc_no , pin, bal ;   //acc_no - AccountNumber, bal- Balance
+	 private Scanner choose=new Scanner(System.in);
+	
+private ATM(int acc_no ,int pin, int bal)
+	{
+	 this.acc_no=acc_no;
+	 this.pin=pin;
+	 this.bal=bal;
+	}
+	
+private void welcome ()
+	{
+		System.out.println("╔══════════════════════════════════╗");
+		System.out.println("║  WELCOME TO THE UOV BANK ATM!!!  ║");
+		System.out.println("║    Please insert the card...     ║");
+		System.out.println("╚══════════════════════════════════╝");	
+	}
+ 
+private void pincheck()
+	{
+	System.out.println("╔═════════════════════════════════╗");
+	System.out.println("║  Please enter the PIN number :  ║");
+	System.out.println("╚═════════════════════════════════╝");
+	int attempts = 1;
+	while(attempts <= 3)
+	 {
+		int entered_pin=choose.nextInt();
+		if(entered_pin == pin)
+			{	
+				processing();
+				break;
+			}
+		else if(attempts != 3)
+			{
+				System.out.println("╔══════════════════════════════╗");
+				System.out.println("║  Your PIN number is wrong... ║");
+				System.out.println("║  So,Re-Enter the PIN...      ║");
+				System.out.println("╚══════════════════════════════╝");
+				attempts++;
+			}
+		
+		else if(attempts == 3)
+			{
+				System.out.println("╔═════════════════════════════════════════════╗");	
+				System.out.println("║  You enter the wrong PIN number 3 times...  ║");
+				System.out.println("║  So, please get the card... Thankyou...     ║");
+				System.out.println("╚═════════════════════════════════════════════╝");
+			break;
+			}
+		
+		
+	}
+
+	}
+	
+private void withdraw()
+	{
+		System.out.println("╔══════════════════════╗");
+		System.out.println("║  Enter the amount :  ║");
+		System.out.println("╚══════════════════════╝");
+		int amo=choose.nextInt();
+		amo=checkAmount(amo);
+					
+		int i1=1;
+		while(i1 > 0)
+		 { System.out.println("╔══════════════════════════════════════╗");
+		   System.out.println("║  Do you want to change the amount :  ║");
+		   System.out.println("║            1.Yes   2.No              ║");
+		   System.out.println("╚══════════════════════════════════════╝");
+		   int sel1=choose.nextInt();
+		   if(sel1 == 1)
+		     {  System.out.println("╔══════════════════════════╗");
+				System.out.println("║  Enter the new amount :  ║");
+				System.out.println("╚══════════════════════════╝");
+				int amo1=choose.nextInt();
+				amo=checkAmount(amo1);
+			 }
+		   else if(sel1 == 2)
+			 {if(amo < bal)
+				{ System.out.println("╔════════════════════════════════════════════════╗");
+				  System.out.println("║Please wait and get the cash...                 ║");
+				  bal=bal-amo;
+			      System.out.println("║The available balance is : Rs."+bal+".00");
+				  System.out.println("╚════════════════════════════════════════════════╝");
+				  askForReceipt("Withdraw", amo);
+				}
+			  else
+			    { System.out.println("╔════════════════════════════════╗");
+				  System.out.println("║  Insufficient account balance  ║");
+				  System.out.println("╚════════════════════════════════╝");
+				}
+			  break;
+			 }
+			  i1++;
+		 }
+	   again();
+	}
+	 
+private void deposit()
+	{	
+		System.out.println("╔════════════════════════════════════╗");
+		System.out.println("║  Please enter the adding amount :  ║");
+		System.out.println("╚════════════════════════════════════╝");
+		int adam=choose.nextInt();
+		adam=checkAmount(adam);
+		System.out.println("╔═════════════════════════════════════════════╗");
+		System.out.println("║  Please putting the cash and continue...    ║");
+	    bal=bal+adam;
+		System.out.println("║  The avilaable balance is : Rs."+bal+".00");
+		System.out.println("╚═════════════════════════════════════════════╝");
+		askForReceipt("Deposit", adam);
+		again();
+	}
+
+private void balanceInquiry()
+	{
+	  System.out.println("╔══════════════════════════════════════════════╗");
+	  System.out.println("║  Your account balance is : Rs."+bal+".00");
+	  System.out.println("╚══════════════════════════════════════════════╝");
+	  askForReceipt("Balance Inquiry", 0);
+	  again();
+	}	
+	
+private void pinChange()
+	{ 
+	  System.out.println("╔═══════════════════════════════════════╗");
+	  System.out.println("║  Enter the 4 digit new pin no :       ║");
+	  System.out.println("╚═══════════════════════════════════════╝");
+	  int p2=choose.nextInt();
+	  if(String.valueOf(p2).length()==4)
+       { pin=p2; }
+      else
+	   { int c1=1;
+		 while(c1!=4)
+		  {
+			System.out.println("╔═══════════════════════════════════════╗");
+		    System.out.println("║  Re-Enter the 4 digit new pin no :    ║");
+	        System.out.println("╚═══════════════════════════════════════╝");
+	        int p3=choose.nextInt();
+            pin=p3;
+			c1=String.valueOf(p3).length();
+		  }
+						
+		}
+	   System.out.println("╔═══════════════════════════════╗");
+	   System.out.println("║  The pin number was changed.  ║");
+	   System.out.println("╚═══════════════════════════════╝");
+	   System.out.println("╔════════════════════════════════════════════════════╗");
+	   System.out.println("║  Do you want check whether pin is change or not ?  ║");
+	   System.out.println("║               1.Yes           2.No                 ║");
+	   System.out.println("╚════════════════════════════════════════════════════╝");
+	   int choice = choose.nextInt();
+	   if(choice == 1)
+		 pincheck();
+	   else
+		 again();	
+	}
+
+private void exit()
+	{ 
+	  System.out.println("╔═════════════════════════════════╗");
+	  System.out.println("║  ThankYou for using our ATM!!!  ║");
+	  System.out.println("╚═════════════════════════════════╝");
+	}
+	
+private void askForReceipt(String trans_Type, int amo) 
+	{
+      System.out.println("╔══════════════════════════════════╗");
+      System.out.println("║  Do you want a receipt?          ║");
+      System.out.println("║         1.Yes   2.No             ║");
+      System.out.println("╚══════════════════════════════════╝");
+      int choice = choose.nextInt();
+      if (choice == 1) 
+          reciept(trans_Type, amo);
+    }
+	
+private void reciept(String trans_Type, int amo)
+	{
+		System.out.println("╔═════════════════════════════════════════════════╗");
+		System.out.println("║  ************E-Receipt***********               ║");
+		System.out.println("║           UOV BANK ATM!!!                       ║");
+		System.out.println("║  Account No : "+acc_no+"                          ");
+		if (trans_Type != "Balance Inquiry") 
+		 {
+		   System.out.println("║  Transaction Type: " + trans_Type         );
+		   System.out.println("║  Amount : Rs."+amo+".00"                   );
+		 }
+		System.out.println("║  Available Balance : Rs."+bal+".00"               );
+		System.out.println("║  Emergency Contact No : +94 11112233            ║");
+		System.out.println("║             Thank you!!!                        ║");
+		System.out.println("╚═════════════════════════════════════════════════╝");
+		
+		
+	}
+	
+private int checkAmount(int amount)
+	{
+		
+		while(amount % 100 != 0)
+			{
+				System.out.println("╔════════════════════════════════════╗");
+				System.out.println("║  Enter the new amount :            ║");
+				System.out.println("║  Amount should multiple 0f 100     ║");
+				System.out.println("╚════════════════════════════════════╝");
+				amount=choose.nextInt();
+			}
+		
+		return amount;
+	}
+	
+private void again()
+	{
+	  System.out.println("╔══════════════════════════════════╗");
+	  System.out.println("║  Do you want one more attempt :  ║");
+	  System.out.println("║         1.Yes   2.No             ║");
+      System.out.println("╚══════════════════════════════════╝");
+	  int i=choose.nextInt();
+	  if(i==1)
+	   {processing();}
+	  else
+	   {exit();}
+	 
+	}
+	
+private void processing()
+	{	
+		System.out.println("╔═══════════════════════════╗");
+        System.out.println("║           MENU            ║");
+        System.out.println("╟───────────────────────────╢");
+		System.out.println("║  ╔═════════════════════╗  ║");
+		System.out.println("║  ║  1.Withdraw         ║  ║"); 
+		System.out.println("║  ║  2.Deposit          ║  ║"); 
+		System.out.println("║  ║  3.Balance Inquiry  ║  ║"); 
+		System.out.println("║  ║  4.PinChange        ║  ║");
+		System.out.println("║  ║  5.Exit             ║  ║");
+		System.out.println("║  ╚═════════════════════╝  ║");
+		System.out.println("╚═══════════════════════════╝");
+	
+		int select=choose.nextInt();
+		switch(select)
+			{
+				case 1 :
+					withdraw();
+					break;
+				
+				case 2 :
+					deposit();
+					break;
+					
+				case 3 :
+					balanceInquiry();
+					break;
+					
+				case 4 :
+					pinChange();
+					break;
+					
+				case 5 :
+					exit();
+					break;
+					
+				default:
+					System.out.println("╔═══════════════════════════╗");
+					System.out.println("║  Invalid selection...     ║");
+					System.out.println("║  So, Please try again...  ║");
+					System.out.println("╚═══════════════════════════╝");
+					processing();
+						
+			}
+		
+	}
+	
+	
+public static void main(String args[])
+{
+	ATM user1=new ATM(123456,1234,200000);
+	user1.welcome();
+	user1.pincheck();
+	
+	ATM user2=new ATM(456789,4567,300000);
+	user2.welcome();
+	user2.pincheck();
+	
+	ATM user3=new ATM(789012,7890,400000);
+	user3.welcome();
+	user3.pincheck();
+	
+	
+	
+}
+}
